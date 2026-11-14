@@ -1,5 +1,5 @@
 """
-Smart Waiter API – the backend for the React UI (replaces main.py / Streamlit as the server side).
+Smart Waiter API – the backend for the React UI (replaced the earlier Streamlit app).
 The React app (frontend/) sends requests here, and SearchEngine runs against ChromaDB.
 
 Run:

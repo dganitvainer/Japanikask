@@ -52,12 +52,15 @@ Each dish was enriched with a language model:
 3. **Ranking**: `score = (vector similarity + 1.0 × word match) / 2`.
    The word match (`core/lexical.py`) checks whether the word – or a synonym from the menu vocabulary,
    e.g. *כיסונים* (dumplings) → *גיוזה / וונטון* (gyoza / wonton) – appears in the name, category or description.
-4. **Relative cutoff**: only dishes close to the best result are shown, instead of always filling 10 slots.
+4. **Relative cutoff**: only dishes close to the best result count as relevant, instead of always filling slots.
+   They come 10 at a time, with a "show more" button when there are more
+   (*"מרק חם"* returns exactly the 6 soups on the menu; *"סושי"* returns 10 of 69).
 
 ### 5. Interface – `api.py` + `frontend/`
 - **FastAPI** exposes `POST /api/search` and `GET /api/health`.
 - **React** (Vite): search box, with/without filters, menu-style dish cards with allergen details,
   and a display of what the system "understood" from the request. Mobile-friendly, right-to-left.
+- The first version used a **Streamlit** UI; it was replaced by React and is still in the git history.
 
 ---
 
@@ -169,5 +172,4 @@ core/
 api.py                                FastAPI
 frontend/                             React + Vite
 eval_search.py                        search quality measurement
-main.py                               Streamlit UI (the first version, still works)
 ```

@@ -15,17 +15,17 @@ def parse_menu(html: str):
     soup = BeautifulSoup(html, "html.parser")
     items = []
 
-    # כל מנה – div עם class menuItem
+    # Each dish is a div with class menuItem
     for item in soup.select("div.menuItem"):
-        # שם המנה
+        # Dish name
         title_el = item.select_one("div.menuItem__title h3")
         name = title_el.get_text(strip=True) if title_el else ""
 
-        # מחיר
+        # Price
         price_el = item.select_one("div.menuItem__price p")
         price = price_el.get_text(strip=True) if price_el else ""
 
-        # ניקח את כל הטקסט מתוך פריט המנה, ואז נוריד ממנו את השם והמחיר
+        # Take all the text in the item, then strip out the name and the price to get the description
         all_text = " ".join(s.strip() for s in item.stripped_strings)
         desc = all_text
 

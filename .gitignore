@@ -2,3 +2,12 @@ venv/
 __pycache__/
 *.pyc
 .env
+node_modules/
+frontend/dist/
+venv/pyvenv.cfg.bak
+chroma_db/
+
+# local only – not part of the project
+.claude/
+*.docx
+japanika_menu_enriched_complete_2.csv
